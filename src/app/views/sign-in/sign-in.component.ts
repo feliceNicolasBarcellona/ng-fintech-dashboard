@@ -10,7 +10,7 @@ export class SignInComponent {
 
   hide: boolean = true
 
-  signIn(signin: NgForm) {
+  onSignIn(signin: NgForm) {
     if (signin.valid) {
       console.log(signin.value);
     } else {

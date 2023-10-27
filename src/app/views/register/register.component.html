@@ -1,0 +1,114 @@
+<form #register="ngForm" (ngSubmit)="onRegister(register)">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <mat-icon color="primary" matPrefix class="icon">
+      alternate_email
+    </mat-icon>
+    <input
+      matInput
+      placeholder="pat@example.com"
+      [ngModel]
+      name="email"
+      type="email"
+      #emailRef="ngModel"
+      required
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+    />
+    <mat-error *ngIf="emailRef.errors?.['required']">
+      Email is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="emailRef.errors?.['pattern']">
+      Please enter a <strong>valid email address</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <mat-icon color="primary" matPrefix class="icon">
+      person
+    </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="name"
+      type="text"
+      #emailRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="emailRef.errors?.['required']">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Surname</mat-label>
+    <mat-icon color="primary" matPrefix class="icon">
+      person
+    </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="surname"
+      type="text"
+      #surnameRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="surnameRef.errors?.['required']">
+      Surname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <mat-icon color="primary" matPrefix class="icon"> lock </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="password"
+      [type]="hidePw ? 'password' : 'text'"
+      #passwordRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="passwordRef.errors?.['required']">
+      Password is <strong>required</strong>
+    </mat-error>
+    <button
+      type="button"
+      mat-icon-button
+      matSuffix
+      (click)="hidePw = !hidePw"
+      [attr.aria-label]="'hidePw password'"
+      [attr.aria-pressed]="hidePw"
+    >
+      <mat-icon>{{ hidePw ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Repeat Password</mat-label>
+    <mat-icon color="primary" matPrefix class="icon"> lock </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="repeatPassword"
+      [type]="hideRepeatPw ? 'password' : 'text'"
+      #repeatPasswordRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="repeatPasswordRef.errors?.['required']">
+      Password is <strong>required</strong>
+    </mat-error>
+    <button
+      type="button"
+      mat-icon-button
+      matSuffix
+      (click)="hideRepeatPw = !hideRepeatPw"
+      [attr.aria-label]="'hideRepeatPw password'"
+      [attr.aria-pressed]="hideRepeatPw"
+    >
+      <mat-icon>{{ hideRepeatPw ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary">Register</button>
+</form>
