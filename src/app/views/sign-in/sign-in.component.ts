@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SignInComponent {
 
-  hide: boolean = true
+  hide: boolean = true;
 
   onSignIn(signin: NgForm) {
     if (signin.valid) {

@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-content>
+    <app-sign-in *ngIf="!visible"></app-sign-in>
+    <app-register *ngIf="visible"></app-register>
+  </mat-card-content>
+  <mat-card-footer>
+    <p (click)="toggle()">
+      <a href="#" >{{
+        !visible
+          ? "Do not have an account? create a new account"
+          : "Do you have an account? Login"
+      }}</a>
+    </p>
+  </mat-card-footer>
+</mat-card>
