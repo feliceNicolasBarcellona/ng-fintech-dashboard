@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './views/login/login.component';
 import { CardListComponent } from './views/card-list/card-list.component';
+import { CardFormComponent } from './views/card-form/card-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CardListComponent } from './views/card-list/card-list.component';
     SignInComponent,
     RegisterComponent,
     LoginComponent,
-    CardListComponent
+    CardListComponent,
+    CardFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CardForm } from './models/card-form';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,13 @@ export class AppComponent {
     console.log(_id, 'cardToRemove');
   }
 
-  cardToAdd() {
-    console.log('add');
+  cardToAdd(event: CardForm) {
+    if (event) {
+      console.log('add', event);
+    }
+  }
+
+  onCancel() {
+    console.log('cancel');
   }
 }
