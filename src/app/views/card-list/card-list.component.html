@@ -1,0 +1,33 @@
+<mat-list>
+  <div mat-subheader>Cards</div>
+  <mat-list-item *ngFor="let card of cards">
+    <mat-icon matListItemIcon>credit_card</mat-icon>
+    <div matListItemTitle>{{ card?.number }}</div>
+    <div matListItemLine>€ {{ card?.amount }} - {{ card?.type }}</div>
+    <div matListItemMeta>
+      <mat-icon
+        matListItemIcon
+        matTooltip="check transactions"
+        (click)="this.checkTransactions.emit(card._id)"
+      >
+        receipt
+      </mat-icon>
+      <mat-icon
+        matListItemIcon
+        matTooltip="remove card"
+        (click)="this.removeCard.emit(card._id)"
+        >delete</mat-icon
+      >
+    </div>
+  </mat-list-item>
+</mat-list>
+<mat-list mat-subheader>
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="this.addCard.emit()"
+  >
+    Add
+  </button>
+</mat-list>

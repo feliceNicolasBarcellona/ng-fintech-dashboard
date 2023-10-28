@@ -1,1 +1,5 @@
-<app-login></app-login>
+<app-card-list
+  (checkTransactions)="transactionsToCheck($event)"
+  (removeCard)="cardToRemove($event)"
+  (addCard)="cardToAdd()"
+></app-card-list>

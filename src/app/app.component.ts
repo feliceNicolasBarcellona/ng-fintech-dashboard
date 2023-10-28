@@ -3,8 +3,18 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ng-fintech-dashboard';
+  transactionsToCheck(_id: string) {
+    console.log(_id, 'transactionsToCheck');
+  }
+
+  cardToRemove(_id: string) {
+    console.log(_id, 'cardToRemove');
+  }
+
+  cardToAdd() {
+    console.log('add');
+  }
 }
