@@ -1,0 +1,42 @@
+<div>
+  <form #selectCard="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Select a card</mat-label>
+      <mat-select
+        type="text"
+        name="selectCard"
+        #selectCardRef="ngModel"
+        [ngModel]
+        (valueChange)="onChange($event)"
+      >
+        <mat-option *ngFor="let card of cards" [value]="card._id">
+          {{ card.number }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <ng-container *ngIf="cardSelected">
+    <h2>Saldo €2000</h2>
+    <app-movement
+      *ngFor="let movement of movements | filterById : cardSelected
+      | slice : 0 : loadedElements"
+      [timestamp]="movement.timestamp"
+      [type]="movement.type"
+      [amount]="movement.amount"
+      [description]="movement.description"
+    ></app-movement>
+
+    <button
+      [hidden]="
+        loadedElements >= (movements | filterById : cardSelected).length
+      "
+      type="button"
+      style="width: 100%; margin-top: 15px"
+      mat-stroked-button
+      (click)="loadMoreElements()"
+    >
+      Load more...
+    </button>
+  </ng-container>
+</div>
