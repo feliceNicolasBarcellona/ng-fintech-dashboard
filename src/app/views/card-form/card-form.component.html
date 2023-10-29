@@ -89,6 +89,20 @@
       Please Enter <strong>3-digit</strong> cvc
     </mat-error>
   </mat-form-field>
-  <button type="submit" mat-raised-button color="primary" (click)="addCard.emit()">Add Card</button>
-  <button mat-stroked-button color="warn" type="button" (click)="this.cancel.emit()">Cancel</button>
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    (click)="addCard.emit()"
+  >
+    Add Card
+  </button>
+  <button
+    mat-stroked-button
+    color="warn"
+    type="button"
+    (click)="this.cancel.emit()"
+  >
+    Cancel
+  </button>
 </form>

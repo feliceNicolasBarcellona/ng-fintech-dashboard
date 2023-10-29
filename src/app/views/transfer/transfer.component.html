@@ -1,0 +1,88 @@
+<form #transfer="ngForm" (ngSubmit)="sendMoney(transfer)">
+  <button mat-stroked-button type="button">Contacts List</button>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <mat-icon color="primary" matPrefix class="icon"> person </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="name"
+      type="text"
+      #emailRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="emailRef.errors?.['required']">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Surname</mat-label>
+    <mat-icon color="primary" matPrefix class="icon"> person </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="surname"
+      type="text"
+      #surnameRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="surnameRef.errors?.['required']">
+      Surname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>IBAN</mat-label>
+    <mat-icon color="primary" matPrefix class="icon"> text_format </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="iban"
+      type="text"
+      #ibanRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="ibanRef.errors?.['required']">
+      Iban is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Amount</mat-label>
+    <mat-icon color="primary" matPrefix class="icon"> money </mat-icon>
+    <input
+      matInput
+      [ngModel]
+      name="amount"
+      type="text"
+      #amountRef="ngModel"
+      required
+    />
+    <mat-error *ngIf="amountRef.errors?.['required']">
+      Amount is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Card</mat-label>
+    <mat-select type="text" name="card" #cardRef="ngModel" [ngModel] required>
+      <mat-option *ngFor="let card of cards" [value]="card._id">
+        {{ card.number }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="cardRef.errors?.['required']">
+      Card is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="accent"
+    type="submit"
+    [disabled]="transfer.invalid"
+  >
+    Send Money
+  </button>
+</form>
