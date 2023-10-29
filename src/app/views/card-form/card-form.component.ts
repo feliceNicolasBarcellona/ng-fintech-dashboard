@@ -1,5 +1,5 @@
 import { NgForm } from '@angular/forms';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CardForm } from 'src/app/models/card-form';
 
 @Component({
@@ -8,21 +8,23 @@ import { CardForm } from 'src/app/models/card-form';
   styleUrls: ['./card-form.component.scss'],
 })
 export class CardFormComponent {
+
   @Output() cancel: EventEmitter<void> = new EventEmitter();
   @Output() addCard: EventEmitter<CardForm> = new EventEmitter();
+  @ViewChild('cardForm', { read: NgForm }) cardForm!: NgForm;
 
   types: string[] = ['Visa', 'Mastercard'];
 
-  onSubmit(cardForm: NgForm) {
-    if (cardForm.valid) {
-      this.addCard.emit(cardForm.value as CardForm);
+  onSubmit() {
+    if (this.cardForm.valid) {
+      this.addCard.emit(this.cardForm.value);
     } else {
       console.log('invalid');
     }
   }
 
-  public cleanUp (cardForm: NgForm){
-    cardForm.reset()
+  public cleanup() {
+    this.cardForm.resetForm();
   }
 
 }

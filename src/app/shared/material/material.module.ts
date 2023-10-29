@@ -65,7 +65,7 @@ const modules = [
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
-  MatNativeDateModule
+  MatNativeDateModule,
 ];
 
 @NgModule({
