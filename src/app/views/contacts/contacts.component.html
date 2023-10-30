@@ -1,9 +1,13 @@
-<div style="padding: 20px">
-  <!-- <app-contact-list
+<ng-container *ngIf="visible">
+  <app-contact-list
     [contacts]="contacts"
-    (selectContact)="selectedContact($event)"
-    (editContact)="editedContact($event)"
     (removeContact)="deletedContact($event)"
-  ></app-contact-list> -->
-  <button mat-raised-button color="primary" type="submit">New Contact</button>
-</div>
+    (editContact)="editedContact($event)"
+    (selectContact)="selectedContact($event)"
+  ></app-contact-list>
+  <button mat-raised-button color="primary" (click)="toggleModal()">Nuovo contatto</button>
+</ng-container>
+<ng-container *ngIf="!visible">
+  <button mat-stroked-button type="button" style="width: 100%;"  (click)="toggleModal()">Back</button>
+  <app-contact-form (saveContact)="saveHandler($event)" [initialContact]="activeContact"></app-contact-form>
+</ng-container>

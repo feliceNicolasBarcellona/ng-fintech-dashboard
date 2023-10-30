@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Card } from 'src/app/models/card';
 import { ContactsComponent } from '../contacts/contacts.component';
+import { Contact } from 'src/app/models/contact';
 
 @Component({
   selector: 'app-transfer',
@@ -30,6 +31,8 @@ export class TransferComponent {
     },
   ];
 
+  contact: Contact | null = null
+
   constructor(private snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   sendMoney(transfer: NgForm) {
@@ -42,5 +45,11 @@ export class TransferComponent {
       height: 'auto',
       width: '600px'
     });
+
+    dialogRef.afterClosed().subscribe((activeContact: Contact) => {
+      if(activeContact){
+        this.contact = activeContact
+      }
+    })
   }
 }
