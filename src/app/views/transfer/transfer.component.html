@@ -1,5 +1,7 @@
 <form #transfer="ngForm" (ngSubmit)="sendMoney(transfer)">
-  <button mat-stroked-button type="button">Contacts List</button>
+  <button mat-stroked-button type="button" (click)="openContactsList()">
+    Contacts List
+  </button>
 
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>

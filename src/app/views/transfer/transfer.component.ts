@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Card } from 'src/app/models/card';
+import { ContactsComponent } from '../contacts/contacts.component';
 
 @Component({
   selector: 'app-transfer',
@@ -28,10 +30,17 @@ export class TransferComponent {
     },
   ];
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   sendMoney(transfer: NgForm) {
     console.log(transfer.value);
     this.snackBar.open('Money Sended', 'SUCCESS', { duration: 2000 });
+  }
+
+  openContactsList() {
+    const dialogRef = this.dialog.open(ContactsComponent, {
+      height: 'auto',
+      width: '600px'
+    });
   }
 }
