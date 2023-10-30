@@ -18,6 +18,8 @@ import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { FilterByIdPipe } from './shared/pipes/filter-by-id.pipe';
 import { TransferComponent } from './views/transfer/transfer.component';
 import { ContactsComponent } from './views/contacts/contacts.component';
+import { ContactListComponent } from './views/contact-list/contact-list.component';
+import { FilterPipe } from './shared/pipes/filter.pipe';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { ContactsComponent } from './views/contacts/contacts.component';
     TruncatePipe,
     FilterByIdPipe,
     TransferComponent,
-    ContactsComponent
+    ContactsComponent,
+    ContactListComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
