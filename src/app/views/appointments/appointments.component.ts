@@ -36,6 +36,8 @@ export class AppointmentsComponent {
   locationId: string | null = null;
   selectedDate: string | null = null;
   slotsFilteredByDay: number[] = [];
+  zoom: number = 25;
+  coords: number[] = [0, 0]
 
   locations: Location[] = [
     {
@@ -116,6 +118,7 @@ export class AppointmentsComponent {
 
   selectedLocation(location: Location, drawer: MatDrawer) {
     this.locationId = location._id;
+    this.coords = location.coords;
     this.pickerInput.value = null;
     this.selectedDate = null;
     drawer.open();
@@ -125,13 +128,10 @@ export class AppointmentsComponent {
     if (!date || !this.locationId) {
       return true;
     }
-
     const dateStr = dateToString(date);
-
     const filteredSlots = this.daysWithSlots.some(
       (slot) => slot.day === dateStr && slot._id === this.locationId
     );
-
     return filteredSlots;
   };
 

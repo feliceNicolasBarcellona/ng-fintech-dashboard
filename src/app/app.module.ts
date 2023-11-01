@@ -23,6 +23,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
 import { ContactFormComponent } from './views/contact-form/contact-form.component';
 import { AppointmentsComponent } from './views/appointments/appointments.component';
 import { ScheduleConfirmComponent } from './views/schedule-confirm/schedule-confirm.component';
+import { AppointmentsMapComponent } from './views/appointments-map/appointments-map.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ScheduleConfirmComponent } from './views/schedule-confirm/schedule-conf
     FilterPipe,
     ContactFormComponent,
     AppointmentsComponent,
-    ScheduleConfirmComponent
+    ScheduleConfirmComponent,
+    AppointmentsMapComponent
   ],
   imports: [
     BrowserModule,

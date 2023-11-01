@@ -1,5 +1,9 @@
 <mat-drawer-container style="height: 100vh" autosize>
   <mat-drawer #drawer mode="side" position="end">
+    <app-appointments-map
+      [coords]="coords"
+      [zoom]="zoom"
+    ></app-appointments-map>
     <mat-form-field class="example-full-width">
       <mat-label>Choose a date</mat-label>
       <input
