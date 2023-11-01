@@ -1,0 +1,49 @@
+<mat-drawer-container style="height: 100vh" autosize>
+  <mat-drawer #drawer mode="side" position="end">
+    <mat-form-field class="example-full-width">
+      <mat-label>Choose a date</mat-label>
+      <input
+        #pickerInput
+        matInput
+        [matDatepicker]="picker"
+        [matDatepickerFilter]="myFilter"
+        (dateChange)="onChangeLocation($event)"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-selection-list
+      [multiple]="false"
+      [ngModel]
+      name="slots"
+      *ngIf="selectedDate"
+      (selectionChange)="onSelectionChange($event)"
+    >
+      <div mat-subheader>Orari disponibili</div>
+      <mat-list-option *ngFor="let slot of slotsFilteredByDay" [value]="slot">
+        <div class="slot-container">
+          <mat-icon mat-list-icon style="opacity: 0.5">schedule</mat-icon>
+          <div class="slot" mat-line>{{ slot }}</div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+  <div>
+    <mat-selection-list [multiple]="false">
+      <div mat-subheader>Locations</div>
+      <mat-list-option
+        *ngFor="let location of locations"
+        [value]="location._id"
+        (click)="selectedLocation(location, drawer)"
+      >
+        <mat-icon matListItemIcon>business</mat-icon>
+        <div matListItemTitle>{{ location.name }}</div>
+        <div matListItemLine>{{ location.address }}</div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</mat-drawer-container>
