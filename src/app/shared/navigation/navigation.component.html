@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav class="sidenav" mode="side" opened>
+    <mat-toolbar color="secondary">Menu</mat-toolbar>
+   <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>home</mat-icon>
+        Home
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>credit_card</mat-icon>
+        Cards
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>receipt_long</mat-icon>
+        Movements
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>paid</mat-icon>
+        Transfer
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>event</mat-icon>
+        Appointments
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>summarize</mat-icon>
+        Taxes
+      </a>
+    </mat-nav-list>
+    <mat-list>
+      <mat-list-item style="background: rgba(0,0,0,.05)">
+        <mat-icon matListItemIcon>person</mat-icon>
+        <div matListItemTitle>Felice Nicolas Barcellona</div>
+        <p matListItemLine style="cursor: pointer" (click)="logout()">Logout</p>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>Fintech Dashboard</span>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

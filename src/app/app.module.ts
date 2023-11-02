@@ -24,6 +24,8 @@ import { ContactFormComponent } from './views/contact-form/contact-form.componen
 import { AppointmentsComponent } from './views/appointments/appointments.component';
 import { ScheduleConfirmComponent } from './views/schedule-confirm/schedule-confirm.component';
 import { AppointmentsMapComponent } from './views/appointments-map/appointments-map.component';
+import { NavigationModule } from './shared/navigation/navigation.module';
+import { NavigationComponent } from './shared/navigation/navigation.component';
 
 
 @NgModule({
@@ -46,14 +48,15 @@ import { AppointmentsMapComponent } from './views/appointments-map/appointments-
     ContactFormComponent,
     AppointmentsComponent,
     ScheduleConfirmComponent,
-    AppointmentsMapComponent
+    AppointmentsMapComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    NavigationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
