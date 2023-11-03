@@ -7,7 +7,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { DayWithSlot } from 'src/app/models/day-with-slot';
 import { DayWithSlots } from 'src/app/models/day-with-slots';
 import { Location } from 'src/app/models/location';
-import { ScheduleConfirmComponent } from '../schedule-confirm/schedule-confirm.component';
+import { ScheduleConfirmComponent } from './components/schedule-confirm/schedule-confirm.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 function dateToString(d: Date) {
