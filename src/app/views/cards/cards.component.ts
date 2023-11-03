@@ -2,7 +2,7 @@ import { CardForm } from './../../models/card-form';
 import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Card } from 'src/app/models/card';
-import { CardFormComponent } from '../card-form/card-form.component';
+import { CardFormComponent } from './components/card-form/card-form.component';
 import { MatDrawer } from '@angular/material/sidenav';
 
 
