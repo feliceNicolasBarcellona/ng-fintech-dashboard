@@ -5,10 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
-import { SignInComponent } from './views/sign-in/sign-in.component';
+
 import { FormsModule } from '@angular/forms';
-import { RegisterComponent } from './views/register/register.component';
-import { LoginComponent } from './views/login/login.component';
+
 import { MovementsComponent } from './views/movements/movements.component';
 import { MovementComponent } from './views/movement/movement.component';
 import { TruncatePipe } from './shared/pipes/truncate.pipe';
@@ -25,9 +24,6 @@ import { NavigationModule } from './shared/navigation/navigation.module';
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent,
-    RegisterComponent,
-    LoginComponent,
     MovementsComponent,
     MovementComponent,
     TruncatePipe,
