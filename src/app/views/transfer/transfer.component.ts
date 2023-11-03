@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Card } from 'src/app/models/card';
-import { ContactsComponent } from '../contacts/contacts.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 import { Contact } from 'src/app/models/contact';
 
 @Component({
