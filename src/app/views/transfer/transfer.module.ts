@@ -8,15 +8,16 @@ import { TransferComponent } from './transfer.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
-
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
-  declarations: [ TransferComponent, ContactFormComponent, ContactListComponent, ContactsComponent ],
-  imports: [
-    CommonModule,
-    TransferRoutingModule,
-    MaterialModule,
-    FormsModule
-  ]
+  declarations: [
+    TransferComponent,
+    ContactFormComponent,
+    ContactListComponent,
+    ContactsComponent,
+    FilterPipe,
+  ],
+  imports: [CommonModule, TransferRoutingModule, MaterialModule, FormsModule],
 })
-export class TransferModule { }
+export class TransferModule {}
