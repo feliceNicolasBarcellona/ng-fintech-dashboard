@@ -42,8 +42,7 @@ export class TransferComponent {
 
   openContactsList() {
     const dialogRef = this.dialog.open(ContactsComponent, {
-      height: 'auto',
-      width: '600px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe((activeContact: Contact) => {

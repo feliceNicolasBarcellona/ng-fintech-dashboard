@@ -2,20 +2,15 @@
   <mat-expansion-panel
     (opened)="panelOpenState = true"
     (closed)="panelOpenState = false"
+    class="margin-bottom"
   >
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <div matLine class="date">[{{ timestamp | date : "dd/MM/yyyy" }}]</div>
-        <div
-          matLine
-          [style.color]="type === 'in' ? 'green' : 'red'"
-          [style.fontWeight]="'bold'"
+        <span class="time">[{{ timestamp | date : "dd/MM/yyyy" }}]</span>
+        <span class="amount" [style.color]="type === 'in' ? 'green' : 'red'"
+          >€ {{ amount }}</span
         >
-          {{ amount | currency : "€" }}
-        </div>
-        <div matLine>
-          {{ title }}
-        </div>
+        {{ title }}
       </mat-panel-title>
       <mat-panel-description>
         {{ panelOpenState ? "" : (description | truncate : 15) }}

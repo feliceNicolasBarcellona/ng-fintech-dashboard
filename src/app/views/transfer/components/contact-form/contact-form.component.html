@@ -1,5 +1,5 @@
 <form #contact="ngForm" (ngSubmit)="onSave(contact)">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Name</mat-label>
     <mat-icon color="primary" matPrefix class="icon"> person </mat-icon>
     <input
@@ -15,7 +15,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Surname</mat-label>
     <mat-icon color="primary" matPrefix class="icon"> person </mat-icon>
     <input
@@ -31,7 +31,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>IBAN</mat-label>
     <mat-icon color="primary" matPrefix class="icon"> text_format </mat-icon>
     <input
@@ -51,6 +51,7 @@
     color="accent"
     type="submit"
     [disabled]="contact.invalid"
+    class="example-full-width"
   >
     Save
   </button>

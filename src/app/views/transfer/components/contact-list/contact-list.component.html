@@ -1,20 +1,21 @@
+<mat-form-field appearance="fill" class="search-form">
+  <mat-label>Search</mat-label>
+  <input matInput #currentTextSearch type="text" />
+  <mat-icon
+    *ngIf="currentTextSearch.value"
+    matSuffix
+    (click)="currentTextSearch.value = ''"
+    >close</mat-icon
+  >
+</mat-form-field>
+
 <mat-list>
-  <div>
-    <mat-form-field style="width: 100%" appearance="fill">
-      <mat-label>Search</mat-label>
-      <input matInput ngModel #currentTextSearch type="text" />
-      <mat-icon
-        *ngIf="currentTextSearch.value"
-        matSuffix
-        (click)="currentTextSearch.value = ''"
-        >close</mat-icon
-      >
-    </mat-form-field>
-  </div>
   <div mat-subheader>Contacts</div>
-  <mat-list-item *ngFor="let contact of contacts | filter: currentTextSearch.value">
+  <mat-list-item
+    *ngFor="let contact of contacts | filter : currentTextSearch.value"
+  >
     <mat-icon matListItemIcon>account_circle</mat-icon>
-    <div matListItemTitle>{{ contact.name }} {{ contact.surname }}</div>
+    <div matListItemLine>{{ contact.name }} {{ contact.surname }}</div>
     <div matListItemLine>{{ contact.iban }}</div>
     <div matListItemMeta>
       <mat-icon

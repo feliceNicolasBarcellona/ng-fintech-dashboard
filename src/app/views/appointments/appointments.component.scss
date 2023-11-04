@@ -3,3 +3,8 @@
 ::ng-deep .mat-mdc-list-option .mdc-radio .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
   display: none;
 }
+
+mat-form-field {
+  margin: 1rem;
+  width: calc(100% - 2rem);
+}

@@ -1,6 +1,5 @@
-<form #cardForm="ngForm" (ngSubmit)="onSubmit()">
-  <h3>Add Card</h3>
-  <mat-form-field appearance="fill">
+<form #cardForm="ngForm" (ngSubmit)="onSubmit()" class="example-form">
+  <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Card Type</mat-label>
     <mat-select type="text" name="type" #typeRef="ngModel" [ngModel] required>
       <mat-option *ngFor="let type of types" [value]="type">
@@ -15,7 +14,7 @@
   <table cellSpacing="0">
     <tr>
       <td>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="example-full-width">
           <mat-label>Name</mat-label>
           <mat-icon color="primary" matPrefix class="icon"> person </mat-icon>
           <input
@@ -32,7 +31,7 @@
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="example-full-width">
           <mat-label>Surname</mat-label>
           <mat-icon color="primary" matPrefix class="icon"> person </mat-icon>
           <input
@@ -50,7 +49,7 @@
       </td>
     </tr>
   </table>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Card Number</mat-label>
     <mat-icon color="primary" matPrefix class="icon"> credit_card </mat-icon>
     <input
@@ -70,7 +69,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Security code</mat-label>
     <mat-icon color="primary" matPrefix class="icon"> credit_card </mat-icon>
     <input
@@ -93,6 +92,7 @@
     type="submit"
     mat-raised-button
     color="primary"
+    class="example-full-width"
     (click)="addCard.emit()"
   >
     Add Card
@@ -100,6 +100,7 @@
   <button
     mat-stroked-button
     color="warn"
+    class="example-full-width"
     type="button"
     (click)="this.cancel.emit()"
   >

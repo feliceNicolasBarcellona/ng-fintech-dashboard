@@ -13,7 +13,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     NavigationComponent,
-
   ],
   imports: [
     CommonModule,
