@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { AppointmentsService } from './../../api/appointments.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
 import { MatInput } from '@angular/material/input';
@@ -6,9 +7,9 @@ import { MatSelectionListChange } from '@angular/material/list';
 import { MatDrawer } from '@angular/material/sidenav';
 import { DayWithSlot } from 'src/app/models/day-with-slot';
 import { DayWithSlots } from 'src/app/models/day-with-slots';
-import { Location } from 'src/app/models/location';
 import { ScheduleConfirmComponent } from './components/schedule-confirm/schedule-confirm.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Location } from 'src/app/models/location';
 
 function dateToString(d: Date) {
   let month = '' + (d?.getMonth() + 1);
@@ -29,58 +30,17 @@ function dateToString(d: Date) {
   templateUrl: './appointments.component.html',
   styleUrls: ['./appointments.component.scss'],
 })
-export class AppointmentsComponent {
+export class AppointmentsComponent implements OnInit {
   @ViewChild('pickerInput', { read: MatInput }) pickerInput!: MatInput;
-  @ViewChild(MatDrawer, {static: false}) drawer!: MatDrawer;
+  @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
 
   locationId: string | null = null;
   selectedDate: string | null = null;
   slotsFilteredByDay: number[] = [];
   zoom: number = 25;
-  coords: number[] = [0, 0]
+  coords: number[] = [0, 0];
 
-  locations: Location[] = [
-    {
-      _id: '1',
-      name: 'Sede 1',
-      address: 'Via dei Tali 1, Roma',
-      coords: [41.9027835, 12.4963655],
-      email: 'test1@test1.com',
-      phone: '000 0000000',
-    },
-    {
-      _id: '2',
-      name: 'Sede 2',
-      address: 'Via dei Tali 2, Roma',
-      coords: [41.9027935, 12.4163155],
-      email: 'test2@test2.com',
-      phone: '111 1111111',
-    },
-    {
-      _id: '3',
-      name: 'Sede 3',
-      address: 'Via dei Tali 3, Firenze',
-      coords: [43.76956, 11.255814],
-      email: 'test3@test3.com',
-      phone: '222 2222222',
-    },
-    {
-      _id: '4',
-      name: 'Sede 4',
-      address: 'Via dei Tali 4, Bassano del Grappa',
-      coords: [45.765729, 11.727275],
-      email: 'test4@test4.com',
-      phone: '333 3333333',
-    },
-    {
-      _id: '5',
-      name: 'Sede 5',
-      address: 'Via dei Tali 5, Cagliari',
-      coords: [39.223841, 9.121661],
-      email: 'test5@test5.com',
-      phone: '444 4444444',
-    },
-  ];
+  locations: Location[] = [];
 
   daysWithSlots: DayWithSlots[] = [
     { _id: '1', day: '11/21/2023', slots: [11, 12, 18] },
@@ -114,7 +74,16 @@ export class AppointmentsComponent {
     { _id: '2', day: '11/11/2023', slots: [10, 11, 13, 14, 17] },
   ];
 
-  constructor(public dialog: MatDialog, private snackBar: MatSnackBar){}
+  constructor(
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private appointmentsService: AppointmentsService
+  ) {}
+
+  ngOnInit(): void {
+    this.appointmentsService.getLocations().subscribe(res => this.locations = res)
+
+  }
 
   selectedLocation(location: Location, drawer: MatDrawer) {
     this.locationId = location._id;
@@ -166,9 +135,9 @@ export class AppointmentsComponent {
           slot: e.source.selectedOptions.selected[0].value,
         };
         this.snackBar.open('Appuntamento confermato', '', {
-          duration: 2000
+          duration: 2000,
         });
-        this.drawer.close()
+        this.drawer.close();
       }
     });
   }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CardsService } from 'src/app/api/cards.service';
 import { Card } from 'src/app/models/card';
 import { Movement } from 'src/app/models/movement';
 
@@ -7,28 +8,11 @@ import { Movement } from 'src/app/models/movement';
   templateUrl: './movements.component.html',
   styleUrls: ['./movements.component.scss'],
 })
-export class MovementsComponent {
+export class MovementsComponent implements OnInit {
 
   cardSelected: string = '';
 
-  cards: Card[] = [
-    {
-      _id: '4cb9292a-5a36-453b-85a3-1750597f7603',
-      number: '1111111111111111',
-      ownerId: 'et45er5e6fba',
-      owner: 'Mario Rossi',
-      type: 'mastercard',
-      amount: 500,
-    },
-    {
-      _id: '4eaccf5b-d6b7-4630-9859-c9bbebffa095',
-      number: '2222222222222222',
-      ownerId: 'et45er5e6fba',
-      owner: 'Mario Rossi',
-      type: 'visa',
-      amount: 250000,
-    },
-  ];
+  cards: Card[] = [];
 
   movements: Movement[] = [
     {
@@ -411,6 +395,12 @@ export class MovementsComponent {
       timestamp: +new Date(),
     },
   ];
+
+  constructor(private cardsService: CardsService){}
+
+  ngOnInit(): void {
+    this.cardsService.getCards().subscribe(cards => this.cards = cards)
+  }
 
   onChange(selectCard: string) {
     this.cardSelected = selectCard;
