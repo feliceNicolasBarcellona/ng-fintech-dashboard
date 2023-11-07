@@ -3,5 +3,5 @@ export interface CardForm {
   name: string;
   surname: string;
   number: string;
-  cvc: string;
+  csc: string;
 }

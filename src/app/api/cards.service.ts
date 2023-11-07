@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment.development';
 import { Card } from '../models/card';
 import { CardForm } from '../models/card-form';
 import { Movement } from '../models/movement';
+import { GetMovements } from '../models/utils';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +27,9 @@ export class CardsService {
     return this.http.delete<boolean>(environment.apiUrl + '/cards/' + cardId)
   }
 
-  getMovements(cardId: string, limit: number, offset: number): Observable<Movement[]>{
+  getMovements(cardId: string, limit: number = 0, offset: number = 0): Observable<GetMovements<Movement[]>>{
     const params = new HttpParams({ fromObject: {limit,offset}})
-    return this.http.get<Movement[]>(environment.apiUrl + '/cards/' + cardId + '/movements/', { params })
+    return this.http.get<GetMovements<Movement[]>>(environment.apiUrl + `/cards/${cardId}/movements`, { params })
   }
 
 }

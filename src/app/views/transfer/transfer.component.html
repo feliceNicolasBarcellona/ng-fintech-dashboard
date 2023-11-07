@@ -59,7 +59,7 @@
         matInput
         [ngModel]
         name="amount"
-        type="text"
+        type="number"
         #amountRef="ngModel"
         required
       />
@@ -70,7 +70,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Card</mat-label>
-      <mat-select type="text" name="card" #cardRef="ngModel" [ngModel] required>
+      <mat-select type="text" name="cardId" #cardRef="ngModel" [ngModel] required>
         <mat-option *ngFor="let card of cards" [value]="card._id">
           {{ card.number }}
         </mat-option>

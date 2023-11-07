@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ContactsService } from './../../../../api/contacts.service';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Contact } from 'src/app/models/contact';
 import { contacts } from 'src/mock-contacts';
@@ -8,21 +9,29 @@ import { contacts } from 'src/mock-contacts';
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss'],
 })
-export class ContactsComponent {
+export class ContactsComponent implements OnInit {
   visible: boolean = true;
 
   activeContact: Contact | null = null;
 
-  contacts: Contact[] = contacts
+  contacts: Contact[] = []
 
-  constructor(public dialogRef: MatDialogRef<ContactsComponent>) {}
+  constructor(public dialogRef: MatDialogRef<ContactsComponent>, private contactsService: ContactsService) {}
+
+
+  ngOnInit(): void {
+    this.contactsService.getContacts().subscribe(res => this.contacts = res)
+  }
 
   selectedContact(contact: Contact) {
+    this.activeContact = contact
     this.dialogRef.close(contact);
   }
 
-  deletedContact(_id: string) {
-    this.contacts = this.contacts.filter((el) => el._id !== _id);
+  deletedContact(contactId: string) {
+    this.contactsService.deleteContact(contactId).subscribe(_ => {
+      this.contacts = this.contacts.filter(el => el._id !== contactId)
+    })
   }
 
   saveHandler(contact: Contact) {
@@ -34,26 +43,35 @@ export class ContactsComponent {
   }
 
   savedContact(contact: Contact) {
-    this.contacts = [
-      ...this.contacts,
-      {
-        _id: Math.random().toString(),
-        name: contact.name,
-        surname: contact.surname,
-        iban: contact.iban,
-      },
-    ];
-    this.toggleModal();
+    if(contact){
+      this.contactsService.insertContact(contact).subscribe(contact => {
+        if(this.contacts){
+          this.contacts = [...this.contacts, contact];
+          this.toggleModal();
+        }
+      })
+    }
   }
 
   editedContact(contact: Contact) {
-    const index = this.contacts.findIndex(
-      (el) => el._id === this.activeContact?._id
-    );
-    this.activeContact = contact;
-    this.contacts[index] = contact;
-    this.toggleModal();
+
+    const contactId = this.contacts.find(contact => contact._id === contact._id);
+
+    if (!contactId) {
+      return;
+    }
+
+    this.contactsService.updateContact(contactId._id, contact)
+      .subscribe(
+        updatedContact => {
+          const index = this.contacts.findIndex(el => el._id === contactId._id);
+          this.contacts[index] = updatedContact;
+          this.activeContact = updatedContact;
+          this.toggleModal();
+        },
+      );
   }
+
 
   toggleModal() {
     this.visible = !this.visible;

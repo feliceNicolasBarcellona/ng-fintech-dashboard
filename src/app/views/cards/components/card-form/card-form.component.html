@@ -75,17 +75,17 @@
     <input
       matInput
       [ngModel]
-      name="cvc"
+      name="csc"
       type="text"
-      #cvcRef="ngModel"
+      #cscRef="ngModel"
       required
       pattern="[0-9]{3}"
     />
-    <mat-error *ngIf="cvcRef.errors?.['required']">
+    <mat-error *ngIf="cscRef.errors?.['required']">
       Cvc is <strong>required</strong>
     </mat-error>
-    <mat-error *ngIf="cvcRef.errors?.['pattern']">
-      Please Enter <strong>3-digit</strong> cvc
+    <mat-error *ngIf="cscRef.errors?.['pattern']">
+      Please Enter <strong>3-digit</strong> Cvc
     </mat-error>
   </mat-form-field>
   <button

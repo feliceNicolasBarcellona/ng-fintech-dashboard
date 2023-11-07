@@ -20,7 +20,7 @@ export class ContactsService {
   }
 
   updateContact(contactId: string, contact: Partial<Contact>): Observable<Contact>{
-    return this.http.put<Contact>(environment.apiUrl + '/contacts/' + contactId, contact)
+    return this.http.put<Contact>(environment.apiUrl + `/contacts/${contactId}`, contact)
   }
 
   deleteContact(contactId: string): Observable<boolean>{
